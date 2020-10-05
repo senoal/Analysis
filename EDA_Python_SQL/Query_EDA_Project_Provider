@@ -1,0 +1,46 @@
+-- data awal terdiri dari kolom tanggal, provinsi, bagian, brand, jenis dan cust_type
+
+-- Query 1
+-- Membuat id untuk seluruh data dalam tabel
+-- ALTER TABLE `provider` ADD `ID` INT(11) NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`ID`);
+
+-- Query 2
+-- hitung jumlah jenis dalam sebuah kolom menggunakan python
+-- diketahui data pada kolom provinsi mengandung spasi,
+-- data pada kolom bagian memiliki nilai = \N
+-- maka ubah nilai \N menjadi 0
+-- UPDATE project_provider
+-- SET bagian = '0'
+-- WHERE bagian = '\\N';
+
+-- Query 3
+-- periksa apakah nilai \N berhasil berubah menjadi 0?
+-- SELECT *
+-- FROM project_provider
+-- where bagian='0';
+
+-- Query 4
+-- hapus data yang mengandung nilai bagian = 0
+-- DELETE FROM project_provider
+-- WHERE bagian='0';
+
+-- periksa kembali data menggunakan Query 3
+
+-- ubah data yang mengandung spasi untuk dihilangkan spasinya
+-- langkah : cari/periksa apakah ada yang mengandung spasi atau tidak menggunakan python
+-- ditemukan data = EASTERN JABODETABEL, CENTRAL JABODETABEK, WESTERN JABODETABEK
+-- hilangkan spasi pada data dari sebuah kolom
+-- SELECT REPLACE(provinsi, ' ', '') FROM project_provider
+-- UPDATE project_provider
+-- SET provinsi = TRIM(provinsi)
+
+-- UPDATE project_provider
+-- SET provinsi = REPLACE(provinsi, ' ', '')
+
+-- SELECT * from project_provider
+-- SELECT REPLACE(provinsi,' ', '')
+
+-- jika sudah, cek kebenaran data tanpa spasi
+select * 
+from project_provider
+where provinsi LIKE 'CENTRALJABOTABEK'
